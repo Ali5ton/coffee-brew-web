@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>signin for coffee brew</title>
+</head>
+<body>
+<h2> sign in page for coffee brew</h2>
+
+    <div class="signin-container">
+        <h2>Sign In</h2>
+        <form action="/submit-signin" method="POST">
+            <label for="username">Username or Email</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+        <div class="forgot-password">
+            <p><a href="/forgot-password">Forgot password?</a></p>
+        </div>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coffee brew</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://insanelygoodrecipes.com/wp-content/uploads/2020/07/Cup-Of-Creamy-Coffee-1024x536.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        header {
+            background-color: #800000;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        div {
+            text-align: center;
+        }
+        nav {
+            background-color: #000000;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+        }
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .product {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin: 10px;
+            text-align: center;
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+        }
+        footer {
+            background-color: #6F4F37;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .product {
+                width: 45%; /* Adjust to 45% for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Coffee brew</h1>
+        <p>Tasty coffees</p>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="/login">Login</a>
+        <a href="/signin">Sign up</a>
+    </nav>
+
+
+
+
+    <div class="container">
+        <section class="main-content">
+            <div class="product">
+                <h3>Espresso</h3>
+                <p>A rich and bold shot of coffee.</p>
+                <p>£1.20</p>
+                <button onclick="increment('espresso')">+</button>
+                <input type="number" id="espresso" value="0" min="0" onchange="updateQuantity('espresso')">
+                <button onclick="decrement('espresso')">-</button>
+                 <button>add to cart</button>
+            </div>
+
+
+
+            <div class="product">
+                <h3>Latte</h3>
+                <p>Smooth espresso with steamed milk.</p>
+                <p>£1.00</p>
+                <button onclick="increment('latte')">+</button>
+                <input type="number" id="latte" value="0" min="0" onchange="updateQuantity('latte')">
+                <button onclick="decrement('latte')">-</button>
+                 <button>add to cart</button>
+
+
+
+            </div>
+            <div class="product">
+                <h3>Americano</h3>
+                <p>Milk from America.</p>
+                <p>£2.00</p>
+                <button onclick="increment('americano')">+</button>
+                <input type="number" id="americano" value="0" min="0" onchange="updateQuantity('americano')">
+                <button onclick="decrement('americano')">-</button>
+                 <button>add to cart</button>
+
+
+
+            </div>
+            <div class="product">
+                <h3>Cappuccino</h3>
+                <p>Espresso with frothed milk and a dash of cocoa.</p>
+                <p>£2.30</p>
+                <button onclick="increment('cappuccino')">+</button>
+                <input type="number" id="cappuccino" value="0" min="0" onchange="updateQuantity('cappuccino')">
+                <button onclick="decrement('cappuccino')">-</button>
+                 <button>add to cart</button>
+            </div>
+
+
+
+
+            <div class="product">
+                <h3>Mocha</h3>
+                <p>Green herbal tea.</p>
+                <p>£2.50</p>
+                <button onclick="increment('mocha')">+</button>
+                <input type="number" id="mocha" value="0" min="0" onchange="updateQuantity('mocha')">
+                <button onclick="decrement('mocha')">-</button>
+                 <button>add to cart</button>
+            </div>
+
+
+
+
+
+            <div class="product">
+                <h3>Cold Coffee</h3>
+                <p>Cold delight.</p>
+                <p>£2.10</p>
+                <button onclick="increment('coldcoffee')">+</button>
+                <input type="number" id="coldcoffee" value="0" min="0" onchange="updateQuantity('coldcoffee')">
+                <button onclick="decrement('coldcoffee')">-</button>
+                <button>add to cart</button>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+
+
+
+    <script>
+        // Initialization of the product counters
+        let coffeeData = {
+            espresso: 0,
+            latte: 0,
+            americano: 0,
+            cappuccino: 0,
+            mocha: 0,
+            coldcoffee: 0
+        };
+
+        // Increment function
+        function increment(product) {
+            coffeeData[product]++;
+            document.getElementById(product).value = coffeeData[product];
+        }
+
+        // Decrement function
+        function decrement(product) {
+            if (coffeeData[product] > 0) {
+                coffeeData[product]--;
+                document.getElementById(product).value = coffeeData[product];
+            }
+        }
+
+        // Update quantity based on user input
+        function updateQuantity(product) {
+            const value = parseInt(document.getElementById(product).value);
+            if (!isNaN(value) && value >= 0) {
+                coffeeData[product] = value;
+            } else {
+                document.getElementById(product).value = coffeeData[product]; // Reset to the previous value if invalid input
+            }
+        }
+    </script>
+
+</body>
+</html>
