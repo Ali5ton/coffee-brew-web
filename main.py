@@ -11,7 +11,7 @@ app.secret_key = "sfygygw"
 
 ######
 def get_db():
-    conn = sqlite3.connect('example.db')
+    conn = sqlite3.connect('instance/example.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -31,8 +31,8 @@ def create_tables():
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # PK is always unique = primary key
-    firstname = db.Column(db.String(), nullable=False)
-    secondname = db.Column(db.String(), nullable=False)
+    username = db.Column(db.String(), nullable=False)
+    email = db.Column(db.String(), nullable=False)
     password = db.Column(db.String(), nullable=False)
 
 
@@ -58,7 +58,7 @@ def user_signin():
         print(name)
         print(surname)
         print(password)
-        recording_db = User(firstname=name, secondname=surname, password=password)
+        recording_db = User(username=name, email=surname, password=password)
         db.session.add(recording_db)
         db.session.commit()
     return render_template('login.html')
