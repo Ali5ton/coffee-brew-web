@@ -1,3 +1,4 @@
+
 import sqlite3
 
 from flask import Flask, redirect, render_template, url_for, request
@@ -52,8 +53,8 @@ def web():
 @app.route("/login",methods=['POST','GET'])
 def user_signin():
     if request.method == 'POST':
-        name = request.form["firstname"]
-        surname = request.form["secondname"]
+        name = request.form["username"]
+        surname = request.form["email"]
         password = request.form["password"]
         print(name)
         print(surname)
